@@ -7,7 +7,9 @@ function TaskList() {
   // Obtener tareas
   const getTasks = async () => {
     try {
-      const { data } = await axios.get("http://localhost:5000/api/tasks");
+      const { data } = await axios.get(
+        `${process.env.REACT_APP_API_URL}/api/tasks`
+      );
       setTasks(data);
     } catch (error) {
       console.error("Error al obtener las tareas:", error);
