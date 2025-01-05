@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import axios from "axios";
 
 function TaskForm() {
@@ -8,7 +8,7 @@ function TaskForm() {
     e.preventDefault();
     if (!title.trim()) return;
     try {
-      await axios.post(`${process.env.REACT_APP_API_URL}/api/tasks`, { title });
+      await axios.post(`${import.meta.env.VITE_API_URL}/api/tasks`, { title });
       setTitle("");
       // Recargamos la página (una forma rápida) o podríamos actualizar el estado usando context
       window.location.reload();

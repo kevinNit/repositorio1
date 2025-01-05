@@ -8,7 +8,7 @@ function TaskList() {
   const getTasks = async () => {
     try {
       const { data } = await axios.get(
-        `${process.env.REACT_APP_API_URL}/api/tasks`
+        `${import.meta.env.VITE_API_URL}/api/tasks`
       );
       setTasks(data);
     } catch (error) {
@@ -25,7 +25,7 @@ function TaskList() {
     try {
       const updatedTask = { ...task, completed: !task.completed };
       const { data } = await axios.put(
-        `${process.env.REACT_APP_API_URL}/api/tasks/${task._id}`,
+        `${import.meta.env.VITE_API_URL}/api/tasks/${task._id}`,
         updatedTask
       );
       setTasks(tasks.map((t) => (t._id === task._id ? data : t)));
@@ -37,7 +37,7 @@ function TaskList() {
   // Eliminar tarea
   const deleteTask = async (id) => {
     try {
-      await axios.delete(`${process.env.REACT_APP_API_URL}/api/tasks/${id}`);
+      await axios.delete(`${import.meta.env.VITE_API_URL}/api/tasks/${id}`);
       setTasks(tasks.filter((task) => task._id !== id));
     } catch (error) {
       console.error("Error al eliminar la tarea:", error);
